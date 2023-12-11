@@ -136,8 +136,28 @@ const RoversList = (state) => {
 }
 const getId = (e) => {
     const rover = e.srcElement.id;
+    getRoverData(rover);
 }
 
+const RoverData = () =>{
+    const roverData = store.get('roverData');
+
+    // with join method returns an array without commas
+    return Array.from(roverData.latest_photos).map( item => 
+        `<div class="rover_data_container">
+            <div class="rover_data_image">
+                <h2>Rover ${item.rover.name}</h2>
+                <img src="${item.img_src}" />
+            </div>
+            <div class="rover_data_info">
+                <p>Image date: ${item.earth_date}</p>
+                <p>Status of the rover: ${item.rover.status.toUpperCase()}</p>
+                <p>Launch date: ${item.rover.launch_date}</p>
+                <p>Landing date: ${item.rover.landing_date}</p>
+            </div>
+         </div>`
+        ).slice(0, 1).join("")
+}
 
 // ------------------------------------------------------  API CALLS
 
@@ -148,4 +168,17 @@ const getImageOfTheDay = (state) => {
     fetch(`http://localhost:3000/apod`)
         .then(res => res.json())
         .then(apod => updateStore(store, { apod }))
+}
+
+const getRoverData = async (rover) => {
+    let display = store.get('display');
+    let roverData = store.get('roverData');
+    const response = await fetch(`http://localhost:3000/rovers/${rover}`) 
+    roverData = await response.json() 
+    display = true
+  
+    const newState = store.set('roverData', roverData).set('display',display);
+   
+    updateStore(store, newState)
+    return roverData
 }

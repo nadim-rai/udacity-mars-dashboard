@@ -25,17 +25,14 @@ header {
   align-items: center;
 
 }
-
 header .image_container{
   height: 90px;
   width: 90px;
 }
-
 .image_container img{
   height: 100%;
   width: 100%;
 }
-
 main{
   width: 95%;
   margin: 0 auto;
@@ -48,12 +45,15 @@ section h1{
   font-family: 'Inter', sans-serif;
   font-size: 32px;
 }
-
 section p{
   color: #fff;
   font-size: 18px;
   line-height: 1.6;
 }
+section a{
+  color: #FCD205;
+}
+
 /****** apod image ******/
 .apod_image_container{
   padding: 15px;
@@ -150,6 +150,10 @@ footer {
   .rover_list{
     flex: 1;
   } 
+   /*** rover data container *****/
+   .rover_data_container{
+    padding: 5px;
+  }
 
 
   }
