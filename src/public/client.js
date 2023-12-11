@@ -43,8 +43,26 @@ const App = (state) => {
                 </p>
                 ${ImageOfTheDay(store.get('apod'))}
             </section>
+            <section class="mars_dash">
+                <h1>Mars Rovers</h1>
+                <div class="rovers_container">
+                     <div class="rover_info">
+                        ${!store.get('display') ? 
+                         `${DefaultImage()}
+                         ` : 
+                         `${RoverData()}`
+                     } 
+                     </div>
+                    <div class="rover_list">
+                        ${RoversList(state)}
+                    </div>
+                </div>
+            </section>
+
         </main>
-        <footer></footer>
+        <footer>
+          <div> &copy; Udacity Project 2023 </div>
+        </footer>
     `
 }
 
@@ -99,6 +117,27 @@ const ImageOfTheDay = (apod) => {
         `)
     }
 }
+
+const DefaultImage = () =>{
+    return `<div class="default_image">
+             <img src="./assets/mars_rover.png" alt="Mars rover">
+            </div>
+            `
+}
+const RoversList = (state) => {
+    return`
+        <ul class="rover_list_ul">${Array.from(state.get('rovers')).map( item => 
+                `<li id=${item}  onclick="getId(event)">
+                   ${`${item}`}
+                </li>`
+                ).join("")}
+        <ul>
+    `   
+}
+const getId = (e) => {
+    const rover = e.srcElement.id;
+}
+
 
 // ------------------------------------------------------  API CALLS
 
