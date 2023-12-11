@@ -25,12 +25,14 @@ const App = (state) => {
     let { rovers, apod } = state
 
     return `
-        <header></header>
+        <header>
+            <div class="image_container">
+                <img src="./assets/mars_rover.png" alt="Mars rover"></a>
+            </div>
+        </header>
         <main>
-            ${Greeting(store.get('user').get('name'))}
             <section>
-                <h3>Put things on the page!</h3>
-                <p>Here is an example section.</p>
+                ${Greeting(store.get('user').get('name'))}
                 <p>
                     One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of
                     the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber video.
@@ -60,7 +62,6 @@ const Greeting = (name) => {
             <h1>Welcome, ${name}!</h1>
         `
     }
-
     return `
         <h1>Hello!</h1>
     `
@@ -81,9 +82,15 @@ const ImageOfTheDay = (apod) => {
     if (apod.image.media_type === "video") {
         return (`
             <p>See today's featured video <a href="${apod.image.url}">here</a></p>
-            <img src="./assets/mars_rover.png" alt="Mars rover">
-            <p>${apod.image.title}</p>
-            <p>${apod.image.explanation}</p>
+            <div class="apod_image_container">
+                <div class="apod_image">
+                    <img src="./assets/mars_rover.png" alt="Mars rover">
+                </div>
+                <div class="apod_text">
+                    <p>${apod.image.title}</p>
+                    <p>${apod.image.explanation}</p>
+                </div>
+            </div>
         `)
     } else {
         return (`
