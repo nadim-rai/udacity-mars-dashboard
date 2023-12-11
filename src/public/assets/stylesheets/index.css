@@ -68,10 +68,55 @@ section p{
   color: #000;
 }
 
+/******** Rover Container *******/
+.rover_info{
+  width: 95%;
+  margin: 0 auto; 
+  padding: 15px; 
+  text-align: center;
+}
 
-  footer {
-    /* footer styles */
-  }
+.rover_list_ul{
+  width: 90%;
+  margin: 0 auto;
+} 
+.rover_list li{
+  list-style: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  margin-left: -45px;
+  color: #050427;
+  background-color: #FCD205;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 19px;
+}
+.rover_list li:hover{
+  letter-spacing: 5px;
+  background-color: #f4df7a;
+}
+.rover_data_container{
+  padding: 5px;
+  background-color: #fff;
+}
+.rover_data_container h1, .rover_data_container p{
+  color: #000;
+}
+.rover_data_image, .rover_data_info{
+  width: 90%;
+  margin: 0 auto;
+}
+.rover_data_image img{
+  max-width: 100%;
+}
+
+/****** footer *****/
+footer {
+  font-size: small;
+  color: #fff;
+  padding: 25px;
+}
   
   /* -------------------  TABLET  --------------------- */
   @media (min-width: 768px) {
@@ -86,6 +131,26 @@ section p{
   .apod_text{
     flex: 2;
   }
+
+   /* rovers */
+   .rovers_container{
+    display: flex;
+  }
+
+  .default_image{
+    width: 45%;
+    margin: 0 auto;
+  }
+
+  .rover_info{
+    flex: 2;
+    padding: 0px; 
+  }
+
+  .rover_list{
+    flex: 1;
+  } 
+
 
   }
   
